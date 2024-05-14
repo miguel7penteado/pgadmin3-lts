@@ -1,0 +1,49 @@
+Description: Don't link with wx webview library
+ "std" includes "webview", which is now packaged for Debian, but as a
+ separate binary package (as it pulls in webkit).  But pgadmin3 doesn't
+ use wxWebView, so this library isn't needed.  Instead just list the
+ other libraries which make up "std" explicitly.
+Author: Olly Betts <olly@survex.com>
+Last-Update: 2014-05-25
+
+# Commented out to avoid autotools trying to regenerate configure.
+#--- pgadmin3-1.18.1.orig/acinclude.m4
+#+++ pgadmin3-1.18.1/acinclude.m4
+#@@ -743,7 +743,7 @@ AC_DEFUN([SETUP_WXWIDGETS],
+# 			CFLAGS=`echo $CFLAGS | sed -e "s/-O2/-O0/g"`
+# 			CXXFLAGS=`echo $CXXFLAGS | sed -e "s/-O2/-O0/g"`
+# 			
+#-			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+#+			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs xrc,html,qa,adv,core,xml,net,base,stc,aui --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+# 			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+# 			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+# 		else
+#@@ -752,7 +752,7 @@ AC_DEFUN([SETUP_WXWIDGETS],
+# 			CFLAGS=`echo $CFLAGS | sed -e "s/-g //g"`
+# 			CXXFLAGS=`echo $CXXFLAGS | sed -e "s/-g //g"`
+# 		
+#-			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+#+			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs xrc,html,qa,adv,core,xml,net,base,stc,aui --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+# 			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+# 			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+# 		fi
+--- a/configure
++++ b/configure
+@@ -6571,7 +6571,7 @@ $as_echo "ok" >&6; }
+ 			CFLAGS=`echo $CFLAGS | sed -e "s/-O2/-O0/g"`
+ 			CXXFLAGS=`echo $CXXFLAGS | sed -e "s/-O2/-O0/g"`
+ 
+-			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
++			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs xrc,html,qa,adv,core,xml,net,base,stc,aui --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+ 			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+ 			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=yes --version=${WX_VERSION} 2> /dev/null`
+ 		else
+@@ -6580,7 +6580,7 @@ $as_echo "ok" >&6; }
+ 			CFLAGS=`echo $CFLAGS | sed -e "s/-g //g"`
+ 			CXXFLAGS=`echo $CXXFLAGS | sed -e "s/-g //g"`
+ 
+-			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs std,stc,aui --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
++			pgadmin3_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs xrc,html,qa,adv,core,xml,net,base,stc,aui --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+ 			pgsTest_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+ 			pgScript_LDADD=`${WX_CONFIG} ${WX_STATIC} --libs base,core,xml --unicode=yes --debug=no --version=${WX_VERSION} 2> /dev/null`
+ 		fi

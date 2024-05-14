@@ -83,9 +83,10 @@ style:
 	./enforce-style.sh
 
 # Create HTML docs
+#cd $(top_srcdir)/docs/en_US && $(MAKE) -f Makefile.sphinx SPHINXBUILD=${SPHINX_BUILD} htmlhelp
 doc:
 if SPHINX_BUILD
-	cd $(top_srcdir)/docs/en_US && $(MAKE) -f Makefile.sphinx SPHINXBUILD=${SPHINX_BUILD} htmlhelp
+	cd $(top_srcdir)/docs/en_US && $(MAKE) -f Makefile.sphinx SPHINXBUILD=${SPHINX_BUILD} epub
 endif
 
 xrc:

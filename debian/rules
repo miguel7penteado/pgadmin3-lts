@@ -1,0 +1,47 @@
+#!/usr/bin/make -f
+
+DPKG_EXPORT_BUILDFLAGS = 1
+include /usr/share/dpkg/buildflags.mk
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+		--prefix=/usr \
+		--mandir=\$${prefix}/share/man \
+		--infodir=\$${prefix}/share/info \
+		--disable-dependency-tracking \
+		--with-wx=/usr \
+		--with-wx-version=$(shell wx-config --release) \
+		--with-libgcrypt \
+		--without-openssl
+
+override_dh_auto_build:
+	$(MAKE) CFLAGS+="-g" CXXFLAGS+="-g"
+	pod2man --center "pgAdmin III" --release "" debian/pgadmin3.pod > pgadmin3.1
+
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -f build-stamp pgadmin3.1
+
+override_dh_install-arch:
+	ln -s pgadmin3-data debian/pgadmin3/usr/share/doc/pgadmin3
+#dbg#	ln -s pgadmin3-data debian/pgadmin3-dbg/usr/share/doc/pgadmin3-dbg
+	dh_install -a --fail-missing
+	#dh_install -a
+	#dh_missing --list-missing
+	chrpath -d debian/pgadmin3/usr/bin/pgadmin3
+
+override_dh_install-indep:
+	# move pgadmin3.mo files to locales directory
+	# this part was written by Andreas Tille <tille@debian.org>
+	set -e; for loc in `find debian/tmp -name pgadmin3.mo` ; do \
+	   LOC=`echo $${loc} | sed "s?.*pgadmin3/i18n/\(.*\)/pgadmin3.mo?\1?"` ; \
+	   mkdir -p debian/pgadmin3-data/usr/share/locale/$${LOC}/LC_MESSAGES ; \
+	   mv $${loc} debian/pgadmin3-data/usr/share/locale/$${LOC}/LC_MESSAGES/. ; \
+	done
+	dh_install -i --fail-missing
+
+#dbg#override_dh_strip:
+#dbg#	dh_strip --dbg-package=pgadmin3-dbg
+
+%:
+	dh $@ --with autoreconf --fail-missing

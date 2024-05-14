@@ -1,0 +1,47 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: pgadmin
+Source: http://www.pgadmin.org/download/source.php
+Copyright: 2002 - 2016, The pgAdmin Development Team
+License: PostgreSQL
+Comment:
+ This package was originally debianized by
+ Raphael Enrici <blacknoz@club-internet.fr> on Mon,  9 Feb 2004 21:37:25 +0000.
+
+Files: *
+Copyright: 2002 - 2016, The pgAdmin Development Team
+License: PostgreSQL
+
+Files: debian/pgadmin3.svg
+Copyright: 2006 Jeff MacDonald
+License: BSD-3-clause
+
+License: PostgreSQL
+ Permission to use, copy, modify, and distribute this software and its
+ documentation for any purpose, without fee, and without a written agreement is
+ hereby granted, provided that the above copyright notice and this paragraph and
+ the following two paragraphs appear in all copies.
+ .
+ IN NO EVENT SHALL THE PGADMIN DEVELOPMENT TEAM BE LIABLE TO ANY PARTY FOR
+ DIRECT, INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST
+ PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF
+ THE PGADMIN DEVELOPMENT TEAM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ .
+ THE PGADMIN DEVELOPMENT TEAM SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING,
+ BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+ PARTICULAR PURPOSE. THE SOFTWARE PROVIDED HEREUNDER IS ON AN "AS IS" BASIS, AND
+ THE PGADMIN DEVELOPMENT TEAM HAS NO OBLIGATIONS TO PROVIDE MAINTENANCE, SUPPORT,
+ UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
+
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions
+ are met:
+ .
+ 1. Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+ 2. Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.
+ 3. Neither the name of the University nor the names of its contributors
+    may be used to endorse or promote products derived from this software
+    without specific prior written permission.

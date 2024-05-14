@@ -1,0 +1,81 @@
+=head1 NAME
+
+B<pgadmin3> - graphical administration tool for PostgreSQL
+
+=head1 SYNOPSIS
+
+B<pgadmin3> [-h] [-s I<str>] [-S] [-Sc I<str>] [-q] [-qc I<str>] [-f I<str>] [-cm I<str>] [-ch I<str>] [-cp I<str>] [-c I<str>] [-t]
+
+=head1 DESCRIPTION
+
+B<pgAdmin III> is a database design and management application for use with
+B<PostgreSQL>. The application can be used to manage PostgreSQL 7.3 and above
+running on any platform.
+
+B<pgAdmin III> is designed to answer the needs of all users, from writing
+simple SQL queries to developing complex databases. The graphical interface
+supports all PostgreSQL features and makes administration easy. The application
+also includes a syntax highlighting SQL editor, a server-side code editor, an
+SQL/batch/shell job scheduling agent, support for the Slony-I replication
+engine and much more. Server connection may be made using TCP/IP or Unix Domain
+Sockets (on *nix platforms), and may be SSL encrypted for security. No
+additional drivers are required to communicate with the database server.
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-h>, B<--help>
+
+show this help message
+
+=item B<-s>, B<--server=>I<str>
+
+auto-connect to specified server
+
+=item B<-S>, B<--serverstatus>
+
+open server status window
+
+=item B<-Sc>, B<--serverstatusconnect=>I<str>
+
+connect server status window to database
+
+=item B<-q>, B<--query>
+
+open query tool
+
+=item B<-qc>, B<--queryconnect=>I<str>
+
+connect query tool to database
+
+=item B<-f>, B<--file=>I<str>
+
+file to load into the query tool in B<-q> or B<-qc> mode
+
+=item B<-cm:>I<str>
+
+edit main configuration file
+
+=item B<-ch:>I<str>
+
+edit HBA configuration file
+
+=item B<-cp:>I<str>
+
+edit pgpass configuration file
+
+=item B<-c:>I<str>
+
+edit configuration files in cluster directory
+
+=item B<-t>
+
+dialog translation test mode
+
+=back
+
+=head1 AUTHOR
+
+This manual page was written by Christoph Berg <myon@debian.org> for the Debian
+project (but may be used by others).

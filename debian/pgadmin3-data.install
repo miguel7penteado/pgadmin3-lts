@@ -1,0 +1,5 @@
+debian/tmp/usr/share/pgadmin3/docs
+debian/tmp/usr/share/pgadmin3/i18n
+debian/tmp/usr/share/pgadmin3/settings.ini
+debian/tmp/usr/share/pgadmin3/plugins.d
+debian/tmp/usr/share/pgadmin3/branding
